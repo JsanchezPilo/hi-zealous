@@ -32,7 +32,7 @@ jobs:
           context: .
           builder: ${{ steps.buildx.outputs.name }}
           file: ./Dockerfile
-          push: false
+          push: true
           tags: ${{ steps.prep.outputs.tagged_image }}-DEV
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -43,7 +43,7 @@ jobs:
           context: .
           builder: ${{ steps.buildx.outputs.name }}
           file: ./Dockerfile
-          push: false
+          push: true
           tags: ${{ steps.prep.outputs.tagged_image }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
