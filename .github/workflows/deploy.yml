@@ -65,4 +65,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{env.AWS_REGION}}
 
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
+
+
+      - name: Deploy helm chart prod Environment
+        uses: WyriHaximus/github-action-helm3@v3
+        with:
+          exec: helm upgrade --install --set image.tag=${{ steps.prep.outputs.tag }} hi-zealous ./zealous/
       
