@@ -72,5 +72,5 @@ jobs:
       - name: Deploy helm chart prod Environment
         uses: WyriHaximus/github-action-helm3@v3
         with:
-          exec: helm upgrade --install --set image.tag=${{ steps.prep.outputs.tag }} hi-zealous ./zealous/
+          exec: helm upgrade --install --wait --set image.tag=${{ steps.prep.outputs.tag }} hi-zealous ./zealous/
       
